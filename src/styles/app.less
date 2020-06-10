@@ -104,19 +104,20 @@ ul.header button.right a:active {
 .grid-container {
   display: grid;
   grid-template-columns: auto auto;
-  grid-gap: 10px;
+  grid-gap: 20px;
   padding: 10px;
   margin-left: 50px;
-  // margin-right: 70px;
 }
 
 .grid-container > div.card {
   border: 0.02px solid #d7cece91;
   font-size: 15px;
-  height: 256px;
+  height: 100%;
   width: 90%;
   background: white;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+  display: grid;
+  grid-template-columns: 32% auto;
 }
 
 .grid-container > div.card:hover {
@@ -124,10 +125,21 @@ ul.header button.right a:active {
 }
 
 .grid-container > div > img {
-  width: 300px !important;
+  width: 90% !important;
   padding: 10px;
+  height: 90%;
 }
 
+.grid-container > div.card > div.card-details > hr {
+  margin-bottom: 0;
+  margin-right: 26px;
+}
+
+.grid-container > div.card > div.card-details > p {
+  font-size: 0.8em;
+  margin-right: 28px;
+  color: rgb(75, 77, 75);
+}
 /* Add padding to containers */
 .login-container-div {
   padding: 50px 0 0 68px;
