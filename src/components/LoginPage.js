@@ -1,13 +1,18 @@
 import React from "react";
 
 const LoginPage = (props) => {
+  const onSubmitLogin = (event) => {
+    event.preventDefault();
+    console.log("here");
+    props.history.push(`/`);
+  };
   return (
     <div className="login-container-div">
-      <form className="login-form">
-        <div class="login-container">
+      <form className="login-form" onSubmit={onSubmitLogin}>
+        <div className="login-container">
           <h1>Login</h1>
           <hr />
-          <label for="email">
+          <label>
             <b>Email</b>
           </label>
           <input
@@ -18,7 +23,7 @@ const LoginPage = (props) => {
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
             required
           />
-          <label for="psw">
+          <label>
             <b>Password</b>
           </label>
           <input
@@ -31,7 +36,7 @@ const LoginPage = (props) => {
             required
           />
           <hr />
-          <button type="submit" class="registerbtn">
+          <button type="submit" className="registerbtn">
             Submit
           </button>
         </div>
