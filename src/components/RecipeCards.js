@@ -13,17 +13,28 @@ const RecipeCards = (props) => {
   const fontStyle = {
     fontSize: "28px",
     float: "right",
-    margin: "17px 23px 0px 0px",
+    margin: "10px 23px 0px 0px",
     paddingBottom: "79px",
     cursor: "pointer",
+    color: "#343434",
   };
 
   const onClickFavourite = (event) => {
     let exists = favourite.filter((r) => r.id === event.id).length;
     if (!exists) {
       setFavourite([...favourite, ...[event]]);
+      recipes.map((r) => {
+        if (r.id === event.id) {
+          r.favorites++;
+        }
+      });
     } else {
       setFavourite([...favourite.filter((r) => r.id !== event.id)]);
+      recipes.filter((r) => {
+        if (r.id === event.id) {
+          r.favorites--;
+        }
+      });
     }
   };
 
@@ -42,13 +53,17 @@ const RecipeCards = (props) => {
                   className="fas fa-heart"
                   style={fontStyle}
                   onClick={() => onClickFavourite(recipe)}
-                ></i>
+                >
+                  <span style={{ marginLeft: "5px" }}>{recipe.favorites}</span>
+                </i>
               ) : (
                 <i
                   className="far fa-heart"
                   style={fontStyle}
                   onClick={() => onClickFavourite(recipe)}
-                ></i>
+                >
+                  <span style={{ marginLeft: "5px" }}>{recipe.favorites}</span>
+                </i>
               )}
 
               <h3
@@ -76,6 +91,7 @@ const RecipeCards = (props) => {
               <p>
                 <strong style={strongStyle}>Proteins:</strong> {recipe.proteins}
               </p>
+              {/* <button className="rate-button">Rate</button> */}
             </div>
           </div>
         );
