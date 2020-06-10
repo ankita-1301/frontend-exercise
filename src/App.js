@@ -2,14 +2,20 @@ import React from "react";
 import NavBar from "./components/NavBar";
 // import "../styles/app.less";
 import LoginPage from "./components/LoginPage";
-import { Route } from "react-router";
+import { Route, Switch } from "react-router";
+import HomePage from "./components/HomePage";
 
-const App = ({ title }) => {
+const App = () => {
   return (
-    <section className="main-section">
+    <div>
       <NavBar />
-      <Route exact path="/login" component={LoginPage} />
-    </section>
+      <div className="home-page">
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/login" component={LoginPage} />
+        </Switch>
+      </div>
+    </div>
   );
 };
 
