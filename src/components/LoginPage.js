@@ -1,11 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import userStore from "../stores/userStore";
 
 const LoginPage = (props) => {
+  const [store, setUserStore] = useState({});
+
+  useEffect(() => {
+    if (!store) {
+      userStore.subscribe(() => {
+        setUserStore(userStore.getState());
+      });
+    }
+    return unsubscribe;
+  }, [store]);
+
+  const unsubscribe = userStore.subscribe(() => {
+    console.log("Unsubscribed from the store of LoginPage !!");
+  });
+
   const onSubmitLogin = (event) => {
     event.preventDefault();
-    console.log("here");
-    props.history.push(`/`);
+    if (!store.loggedIn) {
+      props.history.push(`/`);
+    }
+    userStore.dispatch({
+      type: "LOGIN_LOGOUT",
+      payload: {
+        loggedIn: store.loggedIn,
+      },
+    });
   };
+
   return (
     <div className="login-container-div">
       <form className="login-form" onSubmit={onSubmitLogin}>
