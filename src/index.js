@@ -3,11 +3,15 @@ import { render } from "react-dom";
 import { HashRouter } from "react-router-dom";
 import App from "./App";
 import "./styles/app.less";
+import userStore from "./stores/userStore";
+import { Provider } from "react-redux";
 
 render(
-  <HashRouter>
-    <App />
-  </HashRouter>,
+  <Provider store={userStore}>
+    <HashRouter>
+      <App />
+    </HashRouter>
+  </Provider>,
   document.getElementById("app")
 );
 
