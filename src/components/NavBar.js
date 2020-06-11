@@ -1,7 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import userStore from "../stores/userStore";
 
 const NavBar = () => {
+  const [store, setUserStore] = useState({});
+
+  useEffect(() => {
+    userStore.subscribe(() => {
+      setUserStore(userStore.getState());
+    });
+
+    return unsubscribe;
+  }, [store]);
+
+  const unsubscribe = userStore.subscribe(() => {
+    console.log("Unsubscribed from the store of NavBar !!");
+  });
+
+  const onClick = () => {
+    if (store.loggedIn) {
+      userStore.dispatch({
+        type: "LOGIN_LOGOUT",
+        payload: {
+          loggedIn: store.loggedIn,
+        },
+      });
+    }
+  };
+
   return (
     <ul className="header">
       <li className="logo">
@@ -23,8 +49,8 @@ const NavBar = () => {
       <li>
         <Link to={`/career`}>Career</Link>
       </li>
-      <button className="right">
-        <Link to={`/login`}>Login</Link>
+      <button className="right" onClick={onClick}>
+        {!store.loggedIn ? <Link to={`/login`}>Login</Link> : "Logout"}
       </button>
     </ul>
   );
