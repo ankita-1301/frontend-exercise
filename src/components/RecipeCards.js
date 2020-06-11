@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import recipeData from "../../recipes.json";
 
 const RecipeCards = (props) => {
-  const [favourite, setFavourite] = useState([]);
+  const [favourites, setFavourites] = useState([]);
   const [recipes] = useState(recipeData);
 
   const strongStyle = {
@@ -19,21 +19,17 @@ const RecipeCards = (props) => {
     color: "#343434",
   };
 
-  const onClickFavourite = (event) => {
-    let exists = favourite.filter((r) => r.id === event.id).length;
+  const onClickFavourites = (event) => {
+    let exists = favourites.filter((r) => r.id === event.id).length;
     if (!exists) {
-      setFavourite([...favourite, ...[event]]);
+      setFavourites([...favourites, ...[event]]);
       recipes.map((r) => {
-        if (r.id === event.id) {
-          r.favorites++;
-        }
+        if (r.id === event.id) r.favorites++;
       });
     } else {
-      setFavourite([...favourite.filter((r) => r.id !== event.id)]);
+      setFavourites([...favourites.filter((r) => r.id !== event.id)]);
       recipes.filter((r) => {
-        if (r.id === event.id) {
-          r.favorites--;
-        }
+        if (r.id === event.id) r.favorites--;
       });
     }
   };
@@ -48,11 +44,11 @@ const RecipeCards = (props) => {
               alt="Avatar"
             />
             <div className="card-details">
-              {favourite.includes(recipe) ? (
+              {favourites.includes(recipe) ? (
                 <i
                   className="fas fa-heart"
                   style={fontStyle}
-                  onClick={() => onClickFavourite(recipe)}
+                  onClick={() => onClickFavourites(recipe)}
                 >
                   <span style={{ marginLeft: "5px" }}>{recipe.favorites}</span>
                 </i>
@@ -60,7 +56,7 @@ const RecipeCards = (props) => {
                 <i
                   className="far fa-heart"
                   style={fontStyle}
-                  onClick={() => onClickFavourite(recipe)}
+                  onClick={() => onClickFavourites(recipe)}
                 >
                   <span style={{ marginLeft: "5px" }}>{recipe.favorites}</span>
                 </i>
@@ -91,7 +87,6 @@ const RecipeCards = (props) => {
               <p>
                 <strong style={strongStyle}>Proteins:</strong> {recipe.proteins}
               </p>
-              {/* <button className="rate-button">Rate</button> */}
             </div>
           </div>
         );
