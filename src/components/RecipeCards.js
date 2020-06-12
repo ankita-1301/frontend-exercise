@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import recipeData from "../../recipes.json";
+import Modal from "./Modal";
 
 const RecipeCards = (props) => {
   const [favourites, setFavourites] = useState([]);
   const [recipes] = useState(recipeData);
+  const [showModal, setShowModal] = useState(false);
+  const [currentReceipe, setCurrentReceipe] = useState({});
 
   const strongStyle = {
     textTransform: "uppercase",
@@ -11,7 +14,7 @@ const RecipeCards = (props) => {
     color: "black",
   };
   const fontStyle = {
-    fontSize: "28px",
+    fontSize: "20px",
     float: "right",
     margin: "10px 23px 0px 0px",
     paddingBottom: "79px",
@@ -34,8 +37,29 @@ const RecipeCards = (props) => {
     }
   };
 
+  const onClickRating = (event) => {
+    setShowModal(!showModal);
+    setCurrentReceipe(event);
+  };
+
+  const onSubmitRating = (event) => {
+    setShowModal(!showModal);
+    recipes.map((r) => {
+      if (r.id === currentReceipe.id) {
+        let average = r.rating ? (r.rating + event) / 2.0 : event;
+        r.rating = !Number.isInteger(average) ? average.toFixed(1) : average;
+      }
+    });
+  };
+
   return (
     <div className="grid-container">
+      <Modal
+        onClose={onClickRating}
+        onSubmit={onSubmitRating}
+        show={showModal}
+      ></Modal>
+
       {recipes.map((recipe) => {
         return (
           <div className="card" key={recipe.id}>
@@ -44,24 +68,22 @@ const RecipeCards = (props) => {
               alt="Avatar"
             />
             <div className="card-details">
-              {favourites.includes(recipe) ? (
-                <i
-                  className="fas fa-heart"
-                  style={fontStyle}
-                  onClick={() => onClickFavourites(recipe)}
-                >
-                  <span style={{ marginLeft: "5px" }}>{recipe.favorites}</span>
-                </i>
-              ) : (
-                <i
-                  className="far fa-heart"
-                  style={fontStyle}
-                  onClick={() => onClickFavourites(recipe)}
-                >
-                  <span style={{ marginLeft: "5px" }}>{recipe.favorites}</span>
-                </i>
-              )}
-
+              <i
+                className={
+                  favourites.includes(recipe) ? "fas fa-heart" : "far fa-heart"
+                }
+                style={fontStyle}
+                onClick={() => onClickFavourites(recipe)}
+              >
+                <span style={{ marginLeft: "5px" }}>{recipe.favorites}</span>
+              </i>
+              <i
+                className="far fa-star"
+                style={fontStyle}
+                onClick={() => onClickRating(recipe)}
+              >
+                {recipe.rating}
+              </i>
               <h3
                 style={{
                   paddingBottom: 0,
