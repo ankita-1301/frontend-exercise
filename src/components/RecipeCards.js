@@ -4,7 +4,7 @@ import Modal from "./Modal";
 import RecipeDetails from "./RecipeDetails";
 
 const RecipeCards = (props) => {
-  const [recipes] = useState(recipeData);
+  const [dataSource] = useState(recipeData);
   const [showModal, setShowModal] = useState(false);
   const [currentReceipe, setCurrentReceipe] = useState({});
 
@@ -13,12 +13,14 @@ const RecipeCards = (props) => {
     setCurrentReceipe(event);
   };
 
-  const onSubmitRating = (event) => {
+  const onSubmitRating = (userRating) => {
     setShowModal(!showModal);
-    recipes.map((r) => {
-      if (r.id === currentReceipe.id) {
-        let average = r.rating ? (r.rating + event) / 2.0 : event;
-        r.rating = !Number.isInteger(average) ? average.toFixed(1) : average;
+    dataSource.forEach((data) => {
+      if (data.id === currentReceipe.id) {
+        let average = data.rating
+          ? (data.rating + userRating) / 2.0
+          : userRating;
+        data.rating = !Number.isInteger(average) ? average.toFixed(1) : average;
       }
     });
   };
@@ -31,12 +33,13 @@ const RecipeCards = (props) => {
         show={showModal}
       ></Modal>
       <div className="grid-container" key="grid-container">
-        {recipes.map((recipe) => {
+        {dataSource.map((recipe) => {
           return (
             <RecipeDetails
               dataSource={recipe}
               onClickRating={onClickRating}
               onSubmitRating={onSubmitRating}
+              key={recipe.id}
             ></RecipeDetails>
           );
         })}

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import recipes from "../../recipes.json";
 
 const RecipeDetails = (props) => {
   const [favourites, setFavourites] = useState([]);
+  const [recipeData] = useState(recipes);
   const { onClickRating, dataSource } = props;
   const strongStyle = {
     textTransform: "uppercase",
@@ -17,17 +19,17 @@ const RecipeDetails = (props) => {
     color: "#343434",
   };
 
-  const onClickFavourites = (event) => {
-    let exists = favourites.filter((r) => r.id === event.id).length;
-    if (!exists) {
-      setFavourites([...favourites, ...[event]]);
-      recipes.map((r) => {
-        if (r.id === event.id) r.favorites++;
+  const onClickFavourites = (userFav) => {
+    let recipeExists = favourites.filter((r) => r.id === userFav.id).length;
+    if (!recipeExists) {
+      setFavourites([...favourites, ...[userFav]]);
+      recipeData.map((r) => {
+        if (r.id === userFav.id) r.favorites++;
       });
     } else {
-      setFavourites([...favourites.filter((r) => r.id !== event.id)]);
-      recipes.filter((r) => {
-        if (r.id === event.id) r.favorites--;
+      setFavourites([...favourites.filter((r) => r.id !== userFav.id)]);
+      recipeData.filter((r) => {
+        if (r.id === userFav.id) r.favorites--;
       });
     }
   };
