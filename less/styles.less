@@ -9,7 +9,7 @@
 @box-shadow:0 3px 6px 0 rgba(0, 0, 0, 0.5);
 @input-field-background: #f1f1f1;
 
-/*mixin for creating buttons*/
+/*mixin function for creating buttons*/
 .create-button(@width) {
   border: none;
   width: @width;
@@ -42,6 +42,7 @@ html {
   line-height: 1.15;
 }
 
+/*Top Navbar*/
 .header {
   list-style-type: none;
   margin: 0;
@@ -122,6 +123,7 @@ html {
   vertical-align: middle;
 }
 
+/*Recipe card and details*/
 .grid-container {
   display: grid;
   grid-template-columns: auto auto;
@@ -184,6 +186,7 @@ html {
   }
 }
 
+/*Login page styles*/
 .login-container-div {
   text-align: center;
   padding: 0 15%;
@@ -213,7 +216,7 @@ hr {
   margin-bottom: 25px;
 }
 
-/* Full-width input fields */
+/* Input fields */
 input[type="text"],
 input[type="password"] {
   width: 90%;
