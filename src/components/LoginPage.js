@@ -33,7 +33,7 @@ const LoginPage = (props) => {
   return (
     <div className="login-container-div">
       <form className="login-form" onSubmit={onSubmitLogin}>
-        <div className="login-container">
+        <div>
           <h1>Login</h1>
           <hr />
           <label>
@@ -59,7 +59,6 @@ const LoginPage = (props) => {
             title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
             required
           />
-          <hr />
           <button type="submit" className="registerbtn">
             Submit
           </button>
