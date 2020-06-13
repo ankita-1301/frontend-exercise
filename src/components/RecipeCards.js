@@ -23,26 +23,24 @@ const RecipeCards = ({ dataSource }) => {
 
   return (
     <div>
-      <div className="modal-container">
-        <Modal
-          onClose={onClickRating}
-          onSubmit={onSubmitRating}
-          show={showModal}
-          dataSource={currentReceipe}
-        ></Modal>
+      <Modal
+        onClose={onClickRating}
+        onSubmit={onSubmitRating}
+        show={showModal}
+        dataSource={currentReceipe}
+      ></Modal>
 
-        <div className="grid-container" key="grid-container">
-          {dataSource.map((recipe) => {
-            return (
-              <RecipeDetails
-                dataSource={recipe}
-                onClickRating={onClickRating}
-                onSubmitRating={onSubmitRating}
-                key={recipe.id}
-              ></RecipeDetails>
-            );
-          })}
-        </div>
+      <div className="grid-container" key="grid-container">
+        {dataSource.map((recipe) => {
+          return (
+            <RecipeDetails
+              dataSource={recipe}
+              onClickRating={onClickRating}
+              onSubmitRating={onSubmitRating}
+              key={recipe.id}
+            ></RecipeDetails>
+          );
+        })}
       </div>
     </div>
   );
