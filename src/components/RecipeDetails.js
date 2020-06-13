@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import recipes from "../../recipes.json";
 
-const RecipeDetails = (props) => {
+const RecipeDetails = ({ onClick, dataSource }) => {
   const [favourites, setFavourites] = useState([]);
   const [recipeData] = useState(recipes);
-  const { onClickRating, dataSource } = props;
 
   const onClickFavourites = (userFav) => {
     let recipeExists = favourites.filter((r) => r.id === userFav.id).length;
@@ -36,7 +35,7 @@ const RecipeDetails = (props) => {
         >
           <span>{dataSource.favorites}</span>
         </i>
-        <i className="far fa-star" onClick={() => onClickRating(dataSource)}>
+        <i className="far fa-star" onClick={() => onClick(dataSource)}>
           <span>{dataSource.rating}</span>
         </i>
         <h3>{dataSource.name}</h3>

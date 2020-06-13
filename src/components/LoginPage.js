@@ -1,31 +1,31 @@
 import React, { useEffect, useState } from "react";
-import userStore from "../stores/userStore";
+import reduxStore from "../stores/store";
 
 const LoginPage = (props) => {
-  const [store, setUserStore] = useState({});
+  const [localStore, setLocalStore] = useState({});
 
   useEffect(() => {
-    if (!store) {
-      userStore.subscribe(() => {
-        setUserStore(userStore.getState());
+    if (!localStore) {
+      reduxStore.subscribe(() => {
+        setLocalStore(localStore.getState());
       });
     }
     return unsubscribe;
-  }, [store]);
+  }, []);
 
-  const unsubscribe = userStore.subscribe(() => {
-    console.log("Unsubscribed from the store of LoginPage !!");
+  const unsubscribe = reduxStore.subscribe(() => {
+    setLocalStore({});
   });
 
   const onSubmitLogin = (event) => {
     event.preventDefault();
-    if (!store.loggedIn) {
+    if (!localStore.loggedIn) {
       props.history.push(`/`);
     }
-    userStore.dispatch({
+    reduxStore.dispatch({
       type: "LOGIN_LOGOUT",
       payload: {
-        loggedIn: store.loggedIn,
+        loggedIn: localStore.loggedIn,
       },
     });
   };

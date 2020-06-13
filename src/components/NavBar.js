@@ -1,28 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import userStore from "../stores/userStore";
+import reduxStore from "../stores/store";
 
 const NavBar = () => {
-  const [store, setUserStore] = useState({});
+  const [localStore, setLocalStore] = useState({});
 
   useEffect(() => {
-    userStore.subscribe(() => {
-      setUserStore(userStore.getState());
+    reduxStore.subscribe(() => {
+      setLocalStore(reduxStore.getState());
     });
 
     return unsubscribe;
-  }, [store]);
+  }, [localStore]);
 
-  const unsubscribe = userStore.subscribe(() => {
-    console.log("Unsubscribed from the store of NavBar !!");
+  const unsubscribe = reduxStore.subscribe(() => {
+    // if necessary unsubscription code goes here!
   });
 
   const onClick = () => {
-    if (store.loggedIn) {
-      userStore.dispatch({
+    if (localStore.loggedIn) {
+      reduxStore.dispatch({
         type: "LOGIN_LOGOUT",
         payload: {
-          loggedIn: store.loggedIn,
+          loggedIn: localStore.loggedIn,
         },
       });
     }
@@ -42,7 +42,7 @@ const NavBar = () => {
       </li>
       <li className="login-btn-li">
         <button className="right" onClick={onClick}>
-          {!store.loggedIn ? <Link to={`/login`}>Login</Link> : "Logout"}
+          {!localStore.loggedIn ? <Link to={`/login`}>Login</Link> : "Logout"}
         </button>
       </li>
     </ul>

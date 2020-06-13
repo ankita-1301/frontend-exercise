@@ -3,11 +3,11 @@ import { render } from "react-dom";
 import { HashRouter } from "react-router-dom";
 import App from "./App";
 import "../less/styles.less";
-import userStore from "./stores/userStore";
+import store from "./stores/store";
 import { Provider } from "react-redux";
 
 render(
-  <Provider store={userStore}>
+  <Provider store={store}>
     <HashRouter>
       <App />
     </HashRouter>

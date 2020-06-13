@@ -1,42 +1,45 @@
 import React, { useState } from "react";
 import Modal from "./Modal";
 import RecipeDetails from "./RecipeDetails";
+import reduxStore from "../stores/store";
 
-const RecipeCards = ({ dataSource }) => {
+const RecipeCards = () => {
+  const [localStore] = useState(reduxStore.getState());
   const [showModal, setShowModal] = useState(false);
   const [currentReceipe, setCurrentReceipe] = useState({});
 
-  const onClickRating = (event) => {
+  const onClick = (recipe) => {
     setShowModal(!showModal);
-    setCurrentReceipe(event);
+    setCurrentReceipe(recipe);
   };
 
-  const onSubmitRating = (userRating) => {
+  const onSubmit = (userRating) => {
     setShowModal(!showModal);
-    dataSource.forEach((data) => {
-      if (data.id === currentReceipe.id) {
-        let average = data.rating ? (data.rating + userRating) / 2 : userRating;
-        data.rating = !Number.isInteger(average) ? average.toFixed(1) : average;
-      }
+    reduxStore.dispatch({
+      type: "ADD_RATE",
+      payload: {
+        recipe: { id: currentReceipe.id, rate: userRating },
+      },
     });
   };
 
   return (
     <div>
       <Modal
-        onClose={onClickRating}
-        onSubmit={onSubmitRating}
+        onClose={onClick}
+        onSubmit={onSubmit}
         show={showModal}
         dataSource={currentReceipe}
+        key="modal"
       ></Modal>
 
       <div className="grid-container" key="grid-container">
-        {dataSource.map((recipe) => {
+        {localStore.recipeData.map((recipe) => {
           return (
             <RecipeDetails
               dataSource={recipe}
-              onClickRating={onClickRating}
-              onSubmitRating={onSubmitRating}
+              onClick={onClick}
+              onSubmit={onSubmit}
               key={recipe.id}
             ></RecipeDetails>
           );

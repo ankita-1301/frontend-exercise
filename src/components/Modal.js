@@ -1,21 +1,17 @@
 import React, { useState, useEffect } from "react";
 
-const Modal = (props) => {
-  const onClose = () => {
-    props.onClose();
-  };
-
-  const onSubmit = () => {
-    props.onSubmit(currentRate);
-  };
-
-  if (!props.show) {
+const Modal = ({ dataSource, onClose, onSubmit, show }) => {
+  if (!show) {
     return null;
   }
 
   const [currentRate, setcurrentRate] = useState(1);
 
   useEffect(() => {
+    fetchRatingStarts();
+  }, []);
+
+  const fetchRatingStarts = () => {
     let stars = document.querySelectorAll(".star");
     stars.forEach((star) => star.addEventListener("click", setRating));
 
@@ -24,9 +20,9 @@ const Modal = (props) => {
     );
     let target = stars[rating - 1];
     target.dispatchEvent(new MouseEvent("click"));
-  }, []);
+  };
 
-  function setRating(ev) {
+  const setRating = (ev) => {
     let span = ev.currentTarget;
     let stars = document.querySelectorAll(".star");
     let match = false;
@@ -41,11 +37,11 @@ const Modal = (props) => {
     });
     document.querySelector(".stars").setAttribute("data-rating", num);
     setcurrentRate(num);
-  }
+  };
 
   return (
     <div className="modal" id="modal">
-      <h2>{props.dataSource.name}</h2>
+      <h2>{dataSource.name}</h2>
       <hr />
       <div className="modal-content">
         <div className="stars" data-rating="1">
@@ -57,10 +53,14 @@ const Modal = (props) => {
         </div>
       </div>
       <div className="modal-actions">
-        <button className="toggle-button" type="submit" onClick={onSubmit}>
+        <button
+          className="toggle-button"
+          type="submit"
+          onClick={() => onSubmit(currentRate)}
+        >
           Submit
         </button>
-        <button className="toggle-button" onClick={onClose}>
+        <button className="toggle-button" onClick={() => onClose(dataSource)}>
           Close
         </button>
       </div>

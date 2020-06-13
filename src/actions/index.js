@@ -7,4 +7,13 @@ const userActions = () => {
   };
 };
 
-export default userActions;
+const recipeActions = () => {
+  return {
+    type: "ADD_RATE",
+    payload: {
+      recipe: { id: "", rate: Number },
+    },
+  };
+};
+
+export { userActions, recipeActions };
