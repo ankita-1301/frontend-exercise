@@ -49,9 +49,11 @@ const NavBar = () => {
       <li>
         <Link to={`/career`}>Career</Link>
       </li>
-      <button className="right" onClick={onClick}>
-        {!store.loggedIn ? <Link to={`/login`}>Login</Link> : "Logout"}
-      </button>
+      <li className="login-btn-li">
+        <button className="right" onClick={onClick}>
+          {!store.loggedIn ? <Link to={`/login`}>Login</Link> : "Logout"}
+        </button>
+      </li>
     </ul>
   );
 };
