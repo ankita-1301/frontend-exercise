@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 
 const Modal = (props) => {
-  const onClose = (e) => {
+  const onClose = () => {
     props.onClose();
   };
+
   const onSubmit = () => {
     props.onSubmit(currentRate);
   };
+
   if (!props.show) {
     return null;
   }
@@ -43,8 +45,9 @@ const Modal = (props) => {
 
   return (
     <div className="modal" id="modal">
-      <h2>Modal Window</h2>
-      <div className="content">
+      <h2>{props.dataSource.name}</h2>
+      <hr />
+      <div className="modal-content">
         <div className="stars" data-rating="1">
           <span className="far fa-star star">&nbsp;</span>
           <span className="far fa-star star">&nbsp;</span>
@@ -53,12 +56,12 @@ const Modal = (props) => {
           <span className="far fa-star star">&nbsp;</span>
         </div>
       </div>
-      <div className="actions">
+      <div className="modal-actions">
         <button className="toggle-button" type="submit" onClick={onSubmit}>
           Submit
         </button>
         <button className="toggle-button" onClick={onClose}>
-          close
+          Close
         </button>
       </div>
     </div>
