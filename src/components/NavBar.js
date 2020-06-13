@@ -40,15 +40,6 @@ const NavBar = () => {
       <li>
         <Link to={`/`}>Home</Link>
       </li>
-      <li>
-        <Link to={`/about`}>About</Link>
-      </li>
-      <li>
-        <Link to={`/blog`}>Blog</Link>
-      </li>
-      <li>
-        <Link to={`/career`}>Career</Link>
-      </li>
       <li className="login-btn-li">
         <button className="right" onClick={onClick}>
           {!store.loggedIn ? <Link to={`/login`}>Login</Link> : "Logout"}
