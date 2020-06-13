@@ -2,7 +2,7 @@ const userActions = () => {
   return {
     type: "LOGIN_LOGOUT",
     payload: {
-      loggedIn: "",
+      loggedIn: Boolean,
     },
   };
 };
