@@ -1,3 +1,4 @@
+/*User login action*/
 const userActions = () => {
   return {
     type: "LOGIN_LOGOUT",
@@ -7,6 +8,7 @@ const userActions = () => {
   };
 };
 
+/*All recipe action */
 const recipeActions = () => {
   return {
     type: "ADD_RATE",

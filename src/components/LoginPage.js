@@ -13,6 +13,7 @@ const LoginPage = (props) => {
     return unsubscribe;
   }, []);
 
+  // Unsubcription method to avoid memory leak
   const unsubscribe = reduxStore.subscribe(() => {
     setLocalStore({});
   });
@@ -20,8 +21,10 @@ const LoginPage = (props) => {
   const onSubmitLogin = (event) => {
     event.preventDefault();
     if (!localStore.loggedIn) {
-      props.history.push(`/`);
+      props.history.push(`/`); // redirect to homepage ones logged in
     }
+
+    // Dispatch Login state of the user
     reduxStore.dispatch({
       type: "LOGIN_LOGOUT",
       payload: {

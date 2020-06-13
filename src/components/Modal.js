@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 const Modal = ({ dataSource, onClose, onSubmit, show }) => {
+  // Return Modal only when props - show is true
   if (!show) {
     return null;
   }
@@ -13,12 +14,18 @@ const Modal = ({ dataSource, onClose, onSubmit, show }) => {
   }, []);
 
   const fetchRatingStarts = () => {
+    //get all star elements
     let stars = document.querySelectorAll(".star");
+
+    //attach onClick event
     stars.forEach((star) => star.addEventListener("click", setRating));
 
+    //get current rating
     let rating = parseInt(
       document.querySelector(".stars").getAttribute("data-rating")
     );
+
+    //get targetted star
     let target = stars[rating - 1];
     target.dispatchEvent(new MouseEvent("click"));
   };
@@ -27,17 +34,17 @@ const Modal = ({ dataSource, onClose, onSubmit, show }) => {
     let span = ev.currentTarget;
     let stars = document.querySelectorAll(".star");
     let match = false;
-    let num = 0;
+    let counter = 0;
     stars.forEach(function (star, index) {
       match ? star.classList.remove("rated") : star.classList.add("rated");
       //are we currently looking at the span that was clicked
       if (star === span) {
         match = true;
-        num = index + 1;
+        counter = index + 1;
       }
     });
-    document.querySelector(".stars").setAttribute("data-rating", num);
-    setcurrentRate(num);
+    document.querySelector(".stars").setAttribute("data-rating", counter);
+    setcurrentRate(counter);
   };
 
   return (
