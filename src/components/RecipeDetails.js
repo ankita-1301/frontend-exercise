@@ -23,10 +23,7 @@ const RecipeDetails = ({ onClick, dataSource }) => {
 
   return (
     <div className="card" key={dataSource.id}>
-      <img
-        src="https://eatforum.org/content/uploads/2018/05/table_with_food_top_view_900x700.jpg"
-        alt="Avatar"
-      />
+      <img src={dataSource.image} alt="Avatar" />
       <div className="card-details">
         <i
           className={
