@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
 const Modal = ({ dataSource, onClose, onSubmit, show }) => {
   if (!show) {
@@ -68,4 +69,10 @@ const Modal = ({ dataSource, onClose, onSubmit, show }) => {
   );
 };
 
+Modal.propTypes = {
+  dataSource: PropTypes.object,
+  show: PropTypes.bool,
+  onClose: PropTypes.func,
+  onSubmit: PropTypes.func,
+};
 export default Modal;

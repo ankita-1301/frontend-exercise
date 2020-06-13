@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import recipes from "../../recipes.json";
+import PropTypes from "prop-types";
 
 const RecipeDetails = ({ onClick, dataSource }) => {
   const [favourites, setFavourites] = useState([]);
@@ -58,6 +59,11 @@ const RecipeDetails = ({ onClick, dataSource }) => {
       </div>
     </div>
   );
+};
+
+RecipeDetails.propTypes = {
+  dataSource: PropTypes.object,
+  onClick: PropTypes.func,
 };
 
 export default RecipeDetails;
