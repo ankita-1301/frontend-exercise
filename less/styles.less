@@ -1,0 +1,300 @@
+@main-font: "Source Sans Pro", "Trebuchet MS", "Helvetica", "sans-serif";
+@button-font: "Montserrat", "Verdana", "Geneva", "sans-serif";
+@fresh-dark-gray: #333;
+@para-text-color: #4b4d4b;
+@background-gray: #ffffffe1;
+@fresh-green: #659a41;
+@box-shadow-before: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+@box-shadow:0 3px 6px 0 rgba(0, 0, 0, 0.5);
+@input-field-background: #f1f1f1;
+
+.create-button(@width) {
+  border: none;
+  width: @width;
+  opacity: 0.9;
+  height: 40px;
+  margin-top: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  border-style: solid;
+  border-width: 1px;
+  cursor: pointer;
+  text-align: center;
+  background-color: @fresh-green;
+  box-shadow: none;
+  border-color: #476b2d;
+  color: white;
+  font-family: @button-font;
+  letter-spacing: 2.3px;
+  line-height: 40px;
+}
+
+body {
+  background-color: @background-gray;
+  font-family: @main-font;
+  margin: 0;
+}
+
+html {
+  line-height: 1.15;
+}
+
+.header {
+  list-style-type: none;
+  margin: 0;
+  overflow: hidden;
+  background-color: @fresh-dark-gray;
+  position: relative;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 3.5;
+  padding: 0px 90px;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  letter-spacing: 2.2px;
+  height: 100%;
+  text-transform: uppercase;
+
+  > li {
+    float: left;
+
+    &.logo {
+      padding: 0 10px 0 0;
+    }
+
+    &:hover {
+      background-color: @fresh-green;
+    }
+
+    &.logo:hover {
+      background-color: transparent;
+    }
+
+    > a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 3px 16px;
+      text-decoration: none;
+    }
+
+    & a:hover:active {
+      background-color: @fresh-green;
+    }
+
+    &.login-btn-li {
+      float: right;
+      &:hover {
+        background-color: transparent;
+      }
+    }
+
+    &.right {
+      float: right;
+    }
+
+    &.right:hover {
+      background-color: transparent;
+    }
+  }
+
+  & button.right {
+    .create-button(100%);
+    padding: 0 20px;
+    & a {
+      text-decoration: none;
+      color: white;
+    }
+
+    & a:active {
+      color: inherit;
+    }
+  }
+}
+
+.hellofresh-logo {
+  height: 30px;
+  vertical-align: middle;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 20px;
+  padding: 40px 90px;
+}
+
+.card {
+  border: 0.02px solid #d7cece91;
+  font-size: 15px;
+  height: 100%;
+  background: white;
+  box-shadow: @box-shadow-before;
+  display: grid;
+  grid-template-columns: 33% auto;
+  color: @fresh-dark-gray;
+  letter-spacing: 0.5px;
+  &:hover {
+    box-shadow: @box-shadow;
+  }
+
+  > div.card-details {
+    margin: 0 15px 0 15px;
+
+    > hr {
+      margin: 5px 0 0 0;
+    }
+
+    > p {
+      font-size: 12px;
+      color: @para-text-color;
+
+      > strong {
+        text-transform: uppercase;
+      }
+    }
+
+    > i {
+      font-size: 20px;
+      float: right;
+      margin: 12px 12px 0 0;
+      cursor: pointer;
+      // color: #343434;
+
+      > span {
+        margin-left: 5px;
+      }
+    }
+    > h3 {
+      line-height: 1.1;
+    }
+    > h5 {
+      margin: 0;
+    }
+  }
+
+  > img {
+    width: 100% !important;
+    padding: 5px 0 0 5px;
+    height: 90%;
+  }
+}
+
+.login-container-div {
+  text-align: center;
+
+  > form.login-form {
+    border: 0.02px solid #d7cece91;
+    box-shadow: @box-shadow-before;
+    display: inline-block;
+    margin-top: 40px;
+    text-align: left;
+
+    &:hover {
+      box-shadow: @box-shadow;
+    }
+
+    > div {
+      padding: 20px;
+      background-color: white;
+      text-align: left;
+    }
+  }
+}
+
+hr {
+  border: 1px solid @input-field-background;
+  margin-bottom: 25px;
+}
+
+/* Full-width input fields */
+input[type="text"],
+input[type="password"] {
+  width: 94%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: @input-field-background;
+
+  &:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+}
+
+.registerbtn {
+  .create-button(100%);
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 490px;
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: -2rem 2rem 2rem rgba(black, 0.2);
+  filter: blur(0);
+  opacity: 1;
+  visibility: visible;
+  text-align: center;
+  @media (prefers-reduced-motion) {
+    offset-path: none;
+  }
+  .modal-content {
+    padding: 0 0 20px 0;
+  }
+  .modal-actions {
+    border-top: 1px solid #ccc;
+    background: @input-field-background;
+    button {
+      .create-button(100px);
+    }
+    .toggle-button {
+      margin: 10px;
+    }
+  }
+}
+
+.stars {
+  counter-reset: rateme 0;
+  font-size: 25px;
+  font-weight: 900;
+}
+.star {
+  // font-size: 2rem;
+  font-size: 25px;
+  padding: 0 1rem; /* space out the stars */
+}
+.star::before {
+  content: "\2606"; /* star outline */
+  cursor: pointer;
+}
+.star.rated::before {
+  /* the style for a selected star */
+  content: "\2605"; /* filled star */
+}
+
+.star.rated {
+  counter-increment: rateme 1;
+  font-size: 30px;
+}
+.stars::after {
+  content: counter(rateme) "/5";
+}
+
+@media screen and (max-width: 600px) {
+  ul.header li.right,
+  ul.header li {
+    float: none;
+  }
+}

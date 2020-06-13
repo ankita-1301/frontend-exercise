@@ -5,19 +5,6 @@ const RecipeDetails = (props) => {
   const [favourites, setFavourites] = useState([]);
   const [recipeData] = useState(recipes);
   const { onClickRating, dataSource } = props;
-  const strongStyle = {
-    textTransform: "uppercase",
-    letterSpacing: "1px",
-    color: "black",
-  };
-  const fontStyle = {
-    fontSize: "20px",
-    float: "right",
-    margin: "10px 23px 0px 0px",
-    paddingBottom: "79px",
-    cursor: "pointer",
-    color: "#343434",
-  };
 
   const onClickFavourites = (userFav) => {
     let recipeExists = favourites.filter((r) => r.id === userFav.id).length;
@@ -45,42 +32,29 @@ const RecipeDetails = (props) => {
           className={
             favourites.includes(dataSource) ? "fas fa-heart" : "far fa-heart"
           }
-          style={fontStyle}
           onClick={() => onClickFavourites(dataSource)}
         >
-          <span style={{ marginLeft: "5px" }}>{dataSource.favorites}</span>
+          <span>{dataSource.favorites}</span>
         </i>
-        <i
-          className="far fa-star"
-          style={fontStyle}
-          onClick={() => onClickRating(dataSource)}
-        >
-          {dataSource.rating}
+        <i className="far fa-star" onClick={() => onClickRating(dataSource)}>
+          <span>{dataSource.rating}</span>
         </i>
-        <h3
-          style={{
-            paddingBottom: 0,
-            marginTop: "10px",
-            lineheight: "0.4em",
-          }}
-        >
-          {dataSource.name}
-        </h3>
+        <h3>{dataSource.name}</h3>
 
-        <h5 style={{ margin: 0, padding: 0 }}>{dataSource.headline}</h5>
+        <h5>{dataSource.headline}</h5>
         <hr />
         <p>
-          <strong style={strongStyle}>Ingredients:</strong>
+          <strong>Ingredients:</strong>
           {dataSource.ingredients + "  "}
         </p>
         <p>
-          <strong style={strongStyle}>Calories:</strong> {dataSource.calories}
+          <strong>Calories:</strong> {dataSource.calories}
         </p>
         <p>
-          <strong style={strongStyle}>Time:</strong> {dataSource.time}
+          <strong>Time:</strong> {dataSource.time}
         </p>
         <p>
-          <strong style={strongStyle}>Proteins:</strong> {dataSource.proteins}
+          <strong>Proteins:</strong> {dataSource.proteins}
         </p>
       </div>
     </div>
