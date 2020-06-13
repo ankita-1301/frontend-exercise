@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import reduxStore from "../stores/store";
+import reduxStore from "../stores/reduxStore";
 
 const LoginPage = (props) => {
   const [localStore, setLocalStore] = useState({});

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import reduxStore from "../stores/store";
+import reduxStore from "../stores/reduxStore";
 
 const NavBar = () => {
   const [localStore, setLocalStore] = useState({});

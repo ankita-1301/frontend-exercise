@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Modal from "./Modal";
 import RecipeDetails from "./RecipeDetails";
-import reduxStore from "../stores/store";
+import reduxStore from "../stores/reduxStore";
 
 const RecipeCards = () => {
   const [localStore] = useState(reduxStore.getState());
