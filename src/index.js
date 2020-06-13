@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "react-dom";
 import { HashRouter } from "react-router-dom";
 import App from "./App";
-import "./styles/app.less";
+import "../less/styles.less";
 import userStore from "./stores/userStore";
 import { Provider } from "react-redux";
 
