@@ -1,0 +1,317 @@
+/*variables*/
+/*mixin function for creating buttons*/
+body {
+  background-color: #ffffffe1;
+  font-family: "Source Sans Pro", "Trebuchet MS", "Helvetica", "sans-serif";
+  margin: 0;
+}
+html {
+  line-height: 1.15;
+}
+/*Top Navbar*/
+.header {
+  list-style-type: none;
+  margin: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: relative;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 3.5;
+  padding: 0px 112px;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  letter-spacing: 2.2px;
+  height: 100%;
+  text-transform: uppercase;
+}
+.header > li {
+  float: left;
+}
+.header > li.logo {
+  padding: 0 10px 0 0;
+}
+.header > li:hover {
+  background-color: #659a41;
+}
+.header > li.logo:hover {
+  background-color: transparent;
+}
+.header > li > a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 3px 16px;
+  text-decoration: none;
+}
+.header > li a:hover:active {
+  background-color: #659a41;
+}
+.header > li.login-btn-li {
+  float: right;
+}
+.header > li.login-btn-li:hover {
+  background-color: transparent;
+}
+.header > li.right {
+  float: right;
+}
+.header > li.right:hover {
+  background-color: transparent;
+}
+.header button.right {
+  border: none;
+  width: 100%;
+  opacity: 0.9;
+  height: 40px;
+  margin-top: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  border-style: solid;
+  border-width: 1px;
+  cursor: pointer;
+  text-align: center;
+  background-color: #659a41;
+  box-shadow: none;
+  border-color: #659a41;
+  color: white;
+  font-family: "Montserrat", "Verdana", "Geneva", "sans-serif";
+  letter-spacing: 2.3px;
+  line-height: 40px;
+  padding: 0 20px;
+}
+.header button.right a {
+  text-decoration: none;
+  color: white;
+}
+.header button.right a:active {
+  color: inherit;
+}
+.hellofresh-logo {
+  height: 30px;
+  vertical-align: middle;
+}
+/*Recipe card and details*/
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 20px;
+  padding: 1% 7%;
+}
+.card {
+  border: 0.02px solid #d7cece91;
+  font-size: 15px;
+  height: 100%;
+  background: white;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+  display: grid;
+  grid-template-columns: 33% auto;
+  color: #333;
+  letter-spacing: 0.5px;
+}
+.card:hover {
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.5);
+}
+.card > div.card-details {
+  margin: 0 15px 0 15px;
+}
+.card > div.card-details > hr {
+  margin: 5px 0 0 0;
+}
+.card > div.card-details > p {
+  font-size: 12px;
+  color: #4b4d4b;
+}
+.card > div.card-details > p > strong {
+  text-transform: uppercase;
+}
+.card > div.card-details > i {
+  font-size: 20px;
+  float: right;
+  margin: 12px 12px 12px 0;
+  cursor: pointer;
+}
+.card > div.card-details > i > span {
+  margin-left: 5px;
+}
+.card > div.card-details > h3 {
+  line-height: 1.1;
+}
+.card > div.card-details > h5 {
+  margin: 0;
+}
+.card > img {
+  width: 100% !important;
+  padding: 20px 0 0 5px;
+  height: auto;
+}
+/*Login page styles*/
+.login-container-div {
+  text-align: center;
+  padding: 0 15%;
+}
+.login-container-div > form.login-form {
+  border: 0.02px solid #d7cece91;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  margin: 10%;
+  text-align: left;
+  height: auto;
+}
+.login-container-div > form.login-form:hover {
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.5);
+}
+.login-container-div > form.login-form > div {
+  padding: 20px;
+  background-color: white;
+  text-align: left;
+}
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+/* Input fields */
+input[type="text"],
+input[type="password"] {
+  width: 90%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+input[type="text"]:focus,
+input[type="password"]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+.registerbtn {
+  border: none;
+  width: 100%;
+  opacity: 0.9;
+  height: 40px;
+  margin-top: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  border-style: solid;
+  border-width: 1px;
+  cursor: pointer;
+  text-align: center;
+  background-color: #659a41;
+  box-shadow: none;
+  border-color: #659a41;
+  color: white;
+  font-family: "Montserrat", "Verdana", "Geneva", "sans-serif";
+  letter-spacing: 2.3px;
+  line-height: 40px;
+}
+.registerbtn:hover {
+  opacity: 1;
+}
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: -2rem 2rem 2rem rgba(0, 0, 0, 0.2);
+  filter: blur(0);
+  opacity: 1;
+  visibility: visible;
+  text-align: center;
+}
+@media (prefers-reduced-motion) {
+  .modal {
+    offset-path: none;
+  }
+}
+.modal .modal-content {
+  padding: 0 0 20px 0;
+}
+.modal .modal-actions {
+  border-top: 1px solid #ccc;
+  background: #f1f1f1;
+}
+.modal .modal-actions button {
+  border: none;
+  width: 100px;
+  opacity: 0.9;
+  height: 40px;
+  margin-top: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  border-style: solid;
+  border-width: 1px;
+  cursor: pointer;
+  text-align: center;
+  background-color: #659a41;
+  box-shadow: none;
+  border-color: #659a41;
+  color: white;
+  font-family: "Montserrat", "Verdana", "Geneva", "sans-serif";
+  letter-spacing: 2.3px;
+  line-height: 40px;
+}
+.modal .modal-actions .toggle-button {
+  margin: 10px;
+}
+.stars {
+  counter-reset: rateme 0;
+  font-size: 25px;
+  font-weight: 900;
+}
+.stars::after {
+  content: counter(rateme) "/5";
+}
+.star {
+  padding: 0 5px;
+}
+.star::before {
+  content: "\2606";
+  /* star outline */
+  cursor: pointer;
+}
+.star.rated {
+  counter-increment: rateme 1;
+  font-size: 30px;
+}
+.star.rated::before {
+  /* the style for a selected star */
+  content: "\2605";
+  /* filled star */
+}
+/* Extra large devices (large laptops and desktops) */
+@media screen and (max-width: 1200px) {
+  .grid-container {
+    grid-template-columns: 90%;
+  }
+}
+/* For tablets: */
+@media screen and (max-width: 600px) {
+  .header > li,
+  .header > li.login-btn-li {
+    float: none;
+    padding: 0;
+  }
+  .card > div.card-details > i {
+    font-size: 15px;
+    margin: 12px 0 12px 5px;
+  }
+}
+/* Extra small devices */
+@media screen and (max-width: 500px) {
+  .header > li,
+  .header > li.login-btn-li {
+    float: center;
+  }
+  .modal {
+    width: 80%;
+  }
+}
