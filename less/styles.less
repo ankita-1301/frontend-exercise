@@ -1,3 +1,4 @@
+/*variables*/
 @main-font: "Source Sans Pro", "Trebuchet MS", "Helvetica", "sans-serif";
 @button-font: "Montserrat", "Verdana", "Geneva", "sans-serif";
 @fresh-dark-gray: #333;
@@ -8,6 +9,7 @@
 @box-shadow:0 3px 6px 0 rgba(0, 0, 0, 0.5);
 @input-field-background: #f1f1f1;
 
+/*mixin for creating buttons*/
 .create-button(@width) {
   border: none;
   width: @width;
@@ -49,7 +51,7 @@ html {
   font-size: 16px;
   font-weight: 400;
   line-height: 3.5;
-  padding: 0px 90px;
+  padding: 0px 112px;
   outline: none;
   text-align: center;
   text-decoration: none;
@@ -124,7 +126,7 @@ html {
   display: grid;
   grid-template-columns: auto auto;
   grid-gap: 20px;
-  padding: 40px 90px;
+  padding: 1% 7%;
 }
 
 .card {
@@ -160,9 +162,8 @@ html {
     > i {
       font-size: 20px;
       float: right;
-      margin: 12px 12px 0 0;
+      margin: 12px 12px 12px 0;
       cursor: pointer;
-      // color: #343434;
 
       > span {
         margin-left: 5px;
@@ -179,19 +180,21 @@ html {
   > img {
     width: 100% !important;
     padding: 5px 0 0 5px;
-    height: 90%;
+    height: auto;
   }
 }
 
 .login-container-div {
   text-align: center;
+  padding: 0 15%;
 
   > form.login-form {
     border: 0.02px solid #d7cece91;
     box-shadow: @box-shadow-before;
     display: inline-block;
-    margin-top: 40px;
+    margin: 10%;
     text-align: left;
+    height: auto;
 
     &:hover {
       box-shadow: @box-shadow;
@@ -213,7 +216,7 @@ hr {
 /* Full-width input fields */
 input[type="text"],
 input[type="password"] {
-  width: 94%;
+  width: 90%;
   padding: 15px;
   margin: 5px 0 22px 0;
   display: inline-block;
@@ -237,9 +240,9 @@ input[type="password"] {
 .modal {
   position: fixed;
   top: 50%;
-  left: 50%;
+  left: 45%;
   transform: translate(-50%, -50%);
-  width: 490px;
+  width: 50%;
   background: white;
   border: 1px solid #ccc;
   box-shadow: -2rem 2rem 2rem rgba(black, 0.2);
@@ -276,7 +279,7 @@ input[type="password"] {
 }
 
 .star {
-  padding: 0 1rem;
+  padding: 0 5px;
 
   &::before {
     content: "\2606"; /* star outline */
@@ -294,9 +297,45 @@ input[type="password"] {
   }
 }
 
-@media screen and (max-width: 600px) {
-  ul.header li.right,
-  ul.header li {
-    float: none;
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media screen and (max-width: 1200px) {
+  .grid-container {
+    grid-template-columns: 90%;
   }
+  .modal {
+    // width: 50%;
+  }
+}
+
+/* For tablets: */
+
+@media screen and (max-width: 600px) {
+  .header > li,
+  .header > li.login-btn-li {
+    float: none;
+    padding: 0;
+  }
+
+  .card > div.card-details > i {
+    font-size: 15px;
+    margin: 12px 0 12px 5px;
+  }
+  .modal {
+    // width: 50%;
+  }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media screen and (max-width: 500px) {
+  .header > li,
+  .header > li.login-btn-li {
+    float: center;
+  }
+  .modal {
+    width: 80%;
+  }
+  // .card > div.card-details > i {
+  //   font-size: 15px;
+  //   margin: 12px 0 12px 5px;
+  // }
 }
