@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import recipes from "../../recipes.json";
+import reduxStore from "../stores/reduxStore";
 import PropTypes from "prop-types";
 
 const RecipeDetails = ({ onClick, dataSource }) => {
   const [favourites, setFavourites] = useState([]);
-  const [recipeData] = useState(recipes);
+  const [recipeData] = useState(reduxStore.getState().recipeData);
 
   const onClickFavourites = (userFav) => {
     let recipeExistsInFavs = favourites.filter((r) => r.id === userFav.id)
