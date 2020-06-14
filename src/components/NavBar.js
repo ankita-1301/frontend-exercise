@@ -15,6 +15,7 @@ const NavBar = () => {
 
   const unsubscribe = reduxStore.subscribe(() => {
     // if necessary unsubscription code goes here!
+    setLocalStore({});
   });
 
   const onClick = () => {
