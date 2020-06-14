@@ -7,8 +7,10 @@ const RecipeDetails = ({ onClick, dataSource }) => {
   const [recipeData] = useState(recipes);
 
   const onClickFavourites = (userFav) => {
-    let recipeExists = favourites.filter((r) => r.id === userFav.id).length;
-    if (!recipeExists) {
+    let recipeExistsInFavs = favourites.filter((r) => r.id === userFav.id)
+      .length;
+
+    if (!recipeExistsInFavs) {
       setFavourites([...favourites, ...[userFav]]);
       recipeData.map((r) => {
         if (r.id === userFav.id) r.favorites++;
