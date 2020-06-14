@@ -33,13 +33,11 @@
   line-height: 40px;
 }
 
+html,
 body {
   background-color: @background-gray;
   font-family: @main-font;
   margin: 0;
-}
-
-html {
   line-height: 1.15;
 }
 
@@ -83,10 +81,9 @@ html {
       text-align: center;
       padding: 3px 16px;
       text-decoration: none;
-    }
-
-    & a:hover:active {
-      background-color: @fresh-green;
+      :hover:active {
+        background-color: @fresh-green;
+      }
     }
 
     &.login-btn-li {
@@ -98,10 +95,9 @@ html {
 
     &.right {
       float: right;
-    }
-
-    &.right:hover {
-      background-color: transparent;
+      :hover {
+        background-color: transparent;
+      }
     }
   }
 
@@ -117,11 +113,10 @@ html {
       color: inherit;
     }
   }
-}
-
-.hellofresh-logo {
-  height: 30px;
-  vertical-align: middle;
+  .hellofresh-logo {
+    height: 30px;
+    vertical-align: middle;
+  }
 }
 
 /*Recipe card and details*/
@@ -129,7 +124,7 @@ html {
   display: grid;
   grid-template-columns: auto auto;
   grid-gap: 20px;
-  padding: 1% 7%;
+  padding: 5% 7%;
 }
 
 .card {
@@ -241,6 +236,7 @@ input[type="password"] {
   }
 }
 
+/*Modal styles*/
 .modal {
   position: fixed;
   top: 50%;
@@ -298,6 +294,20 @@ input[type="password"] {
   &::before {
     /* the style for a selected star */
     content: "\2605"; /* filled star */
+  }
+}
+
+/*Footer styles*/
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: @background-gray;
+  color: @fresh-white;
+  text-align: center;
+  > p {
+    color: @fresh-green;
   }
 }
 
