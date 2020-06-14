@@ -82,4 +82,11 @@ Modal.propTypes = {
   onClose: PropTypes.func,
   onSubmit: PropTypes.func,
 };
+
+Modal.defaultProps = {
+  dataSource: {},
+  show: false,
+  onClose: () => {},
+  onSubmit: () => {},
+};
 export default Modal;

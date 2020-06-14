@@ -63,4 +63,9 @@ RecipeDetails.propTypes = {
   onClick: PropTypes.func,
 };
 
+RecipeDetails.defaultProps = {
+  dataSource: {},
+  onClick: () => {},
+};
+
 export default RecipeDetails;
