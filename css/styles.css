@@ -1,11 +1,10 @@
 /*variables*/
 /*mixin function for creating buttons*/
+html,
 body {
   background-color: #ffffffe1;
   font-family: "Source Sans Pro", "Trebuchet MS", "Helvetica", "sans-serif";
   margin: 0;
-}
-html {
   line-height: 1.15;
 }
 /*Top Navbar*/
@@ -46,7 +45,7 @@ html {
   padding: 3px 16px;
   text-decoration: none;
 }
-.header > li a:hover:active {
+.header > li > a :hover:active {
   background-color: #659a41;
 }
 .header > li.login-btn-li {
@@ -58,7 +57,7 @@ html {
 .header > li.right {
   float: right;
 }
-.header > li.right:hover {
+.header > li.right :hover {
   background-color: transparent;
 }
 .header button.right {
@@ -90,7 +89,7 @@ html {
 .header button.right a:active {
   color: inherit;
 }
-.hellofresh-logo {
+.header .hellofresh-logo {
   height: 30px;
   vertical-align: middle;
 }
@@ -99,7 +98,7 @@ html {
   display: grid;
   grid-template-columns: auto auto;
   grid-gap: 20px;
-  padding: 1% 7%;
+  padding: 5% 7%;
 }
 .card {
   border: 0.02px solid #d7cece91;
@@ -212,12 +211,13 @@ input[type="password"]:focus {
 .registerbtn:hover {
   opacity: 1;
 }
+/*Modal styles*/
 .modal {
   position: fixed;
   top: 50%;
   left: 45%;
   transform: translate(-50%, -50%);
-  width: 50%;
+  width: 30%;
   background: white;
   border: 1px solid #ccc;
   box-shadow: -2rem 2rem 2rem rgba(0, 0, 0, 0.2);
@@ -287,10 +287,26 @@ input[type="password"]:focus {
   content: "\2605";
   /* filled star */
 }
+/*Footer styles*/
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #ffffffe1;
+  color: white;
+  text-align: center;
+}
+.footer > p {
+  color: #659a41;
+}
 /* Extra large devices (large laptops and desktops) */
 @media screen and (max-width: 1200px) {
   .grid-container {
     grid-template-columns: 90%;
+  }
+  .modal {
+    width: 40%;
   }
 }
 /* For tablets: */
@@ -303,6 +319,9 @@ input[type="password"]:focus {
   .card > div.card-details > i {
     font-size: 15px;
     margin: 12px 0 12px 5px;
+  }
+  .modal {
+    width: 80%;
   }
 }
 /* Extra small devices */
